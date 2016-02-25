@@ -63,11 +63,35 @@ todoApp.controller("listManageCtrl", function($scope) {
 
 
 
-
     $scope.listeAffichee = 0;
 
     $scope.click = function(listid){
         $scope.listeAffichee = listid;
     };
+
+    $scope.ajouterTache = function(){
+
+        $scope.lists[$scope.listeAffichee-1].taskslist.push(
+                {
+                    'taskid': 2,
+                    'name':$scope.nouvelleTache
+                });
+
+    };
+
+    $scope.ajouterListe = function(){
+
+        $scope.lists.push(
+                {
+                    'listid'    : 4,
+                    'name'      : $scope.nouvelleListe,
+                    'taskslist'  : []
+                }
+                );
+
+    };
+
+
+
 
 });

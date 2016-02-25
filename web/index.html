@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		
-		<title>Bootstrap 101 Template</title>
+		<title>La ToDoList du petit Louc</title>
 
 	        <!-- Bootstrap -->
 	        <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -19,16 +19,30 @@
                 <script src="js/app.js"></script>
 
 	</head>
+
 	<body ng-controller="listManageCtrl">    
 
             <!-- SIDEBAR -->
             <div class="col-sm-3 col-md-2 sidebar">
+
+                <!-- ajouter une nouvelle liste -->
+                <form ng-submit="ajouterListe()">
+                    <input type="text" placehoder="Une nouvelle liste ?" ng-model="nouvelleListe" />
+                </form>
+
+                <!-- noms des listes -->
                 <h1 ng-repeat="list in lists" ng-click="click(list.listid)">{{list.name}}</h1>
             </div>
 
-
+            <!-- MAIN SCREEN -->
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
+                <!-- RAJOUTER UNE TACHE -->
+                <form ng-submit="ajouterTache()" ng-show="listeAffichee != 0">
+                    <input type="text" placeholder="Que dois-je faire ?" ng-model="nouvelleTache"/>
+                </form>
+    
+                <!-- LISTE DE TACHES -->
                 <ul ng-repeat="list in lists" ng-show="listeAffichee == {{list.listid}}" >
                     <li ng-repeat="item in list.taskslist">
                         <span>{{item.name}}</span>
