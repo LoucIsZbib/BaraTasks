@@ -60,7 +60,7 @@ todoApp.controller("listManageCtrl", function($scope) {
             'name': 'Rome'
         },
         {
-            'taskid': 3,
+            'taskid': 5,
             'completed':true,
             'name': 'Madrid'
         }
@@ -80,22 +80,45 @@ todoApp.controller("listManageCtrl", function($scope) {
 
     $scope.ajouterTache = function(){
 
+        // recherche de l'id de tache le plus haut
+        var myCurrentTasklist = $scope.lists[$scope.listeAffichee-1].taskslist;
+        var maxId = 0;
+        for (var i = 0; i < myCurrentTasklist.length; i++) {
+            var id = myCurrentTasklist[i].taskid;
+            if (id > maxId) {
+                maxId = id;
+            }
+        }
+
+        var newId = maxId +1 ;
         $scope.lists[$scope.listeAffichee-1].taskslist.push(
                 {
-                    'taskid': 2,
+                    'taskid': newId,
                     'name':$scope.nouvelleTache
                 });
 
         // on réinitialise le champ, pour etre pret à avoir une nouvelle tache
         $scope.nouvelleTache = null;
 
+        // DEBUG
+        //alert(newId);
     };
 
     $scope.ajouterListe = function(){
 
+        // recherche de l'id de liste le plus haut
+        var maxId = 0;
+        for (var i = 0; i < $scope.lists.length; i++) {
+            var id = $scope.lists[i].listid;
+            if (id > maxId) {
+                maxId = id;
+            }
+        }
+
+        var newId = maxId +1 ;
         $scope.lists.push(
                 {
-                    'listid'    : 4,
+                    'listid'    : newId,
                     'name'      : $scope.nouvelleListe,
                     'taskslist'  : []
                 }
@@ -104,6 +127,8 @@ todoApp.controller("listManageCtrl", function($scope) {
         // on réinitialise le champ, pour etre pret à avoir une nouvelle liste
         $scope.nouvelleListe = null;
 
+        // DEBUG
+        alert(newId);
     };
 
 

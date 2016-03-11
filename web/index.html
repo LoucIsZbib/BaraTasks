@@ -58,7 +58,9 @@
                 <!-- LISTE DE TACHES -->
                 <ul ng-repeat="list in lists" ng-show="listeAffichee == {{list.listid}}" >
                     <li ng-repeat="item in list.taskslist">
-                        <input type="checkbox" class="checkbox" ng-model="item.completed"/>
+                        <div class="checkboxContainer">
+                            <input type="checkbox" class="checkbox" ng-model="item.completed"/>
+                        </div>
                         <div class="verticalSep"></div>
                         <span class="taskname" ng-class="{completed: item.completed}">{{item.name}}</span>
                     </li>
