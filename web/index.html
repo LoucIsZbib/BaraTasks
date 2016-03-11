@@ -27,17 +27,24 @@
 	<body ng-controller="listManageCtrl">    
 
             <!-- SIDEBAR -->
-            <aside class="col-sm-3 col-md-2 sidebar">
+            <aside class="col-sm-3 col-md-2">
+
+                <!-- noms des listes -->
+                <ul>
+                    <li
+                        ng-repeat="list in lists"
+                        ng-click="click(list.listid);" 
+                        ng-class="{listeActive: listeAffichee == list.listid}"
+                        >
+                        {{list.name}}
+                    </li>
+                </ul>
 
                 <!-- ajouter une nouvelle liste -->
                 <form ng-submit="ajouterListe()">
-                    <input type="text" placehoder="Une nouvelle liste ?" ng-model="nouvelleListe" />
+                    <input type="text" placeholder="Une nouvelle liste ?" ng-model="nouvelleListe" />
                 </form>
 
-                <!-- noms des listes -->
-                <ul ng-repeat="list in lists">
-                   <li ng-click="click(list.listid)">{{list.name}}</ul>
-                </ul>
             </aside>
 
             <!-- MAIN SCREEN -->
@@ -51,7 +58,9 @@
                 <!-- LISTE DE TACHES -->
                 <ul ng-repeat="list in lists" ng-show="listeAffichee == {{list.listid}}" >
                     <li ng-repeat="item in list.taskslist">
-                        <span>{{item.name}}</span>
+                        <input type="checkbox" class="checkbox" ng-model="item.completed"/>
+                        <div class="verticalSep"></div>
+                        <span class="taskname" ng-class="{completed: item.completed}">{{item.name}}</span>
                     </li>
                 </ul>
                 

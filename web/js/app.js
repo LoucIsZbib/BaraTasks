@@ -9,14 +9,17 @@ todoApp.controller("listManageCtrl", function($scope) {
         'taskslist': [
         {
             'taskid': 1,
+            'completed':true,
             'name': 'Vaisselle'
         },
         {
             'taskid': 2,
+            'completed':false,
             'name': 'Ménage'
         },
         {
             'taskid': 3,
+            'completed':false,
             'name': 'Linge'
         }
         ]
@@ -27,14 +30,17 @@ todoApp.controller("listManageCtrl", function($scope) {
         'taskslist': [
         {
             'taskid': 1,
+            'completed':false,
             'name': 'Pizza'
         },
         {
             'taskid': 2,
+            'completed':true,
             'name': 'pates'
         },
         {
             'taskid': 3,
+            'completed':false,
             'name': 'Haricots'
         }
         ]
@@ -45,14 +51,17 @@ todoApp.controller("listManageCtrl", function($scope) {
         'taskslist': [
         {
             'taskid': 1,
+            'completed':false,
             'name': 'Paris'
         },
         {
             'taskid': 2,
+            'completed':false,
             'name': 'Rome'
         },
         {
             'taskid': 3,
+            'completed':true,
             'name': 'Madrid'
         }
         ]
@@ -77,6 +86,9 @@ todoApp.controller("listManageCtrl", function($scope) {
                     'name':$scope.nouvelleTache
                 });
 
+        // on réinitialise le champ, pour etre pret à avoir une nouvelle tache
+        $scope.nouvelleTache = null;
+
     };
 
     $scope.ajouterListe = function(){
@@ -88,6 +100,9 @@ todoApp.controller("listManageCtrl", function($scope) {
                     'taskslist'  : []
                 }
                 );
+
+        // on réinitialise le champ, pour etre pret à avoir une nouvelle liste
+        $scope.nouvelleListe = null;
 
     };
 
