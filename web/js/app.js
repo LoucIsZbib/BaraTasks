@@ -128,7 +128,7 @@ todoApp.controller("listManageCtrl", function($scope) {
         $scope.nouvelleListe = null;
 
         // DEBUG
-        alert(newId);
+        //alert(newId);
     };
 
 
