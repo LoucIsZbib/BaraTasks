@@ -1,83 +1,43 @@
 var todoApp = angular.module("todoApp", []);
 
-todoApp.controller("listManageCtrl", function($scope) {
-    
-    $scope.lists = [
-    {
-        'listid': 1,
-        'name': 'Nettoyage',
-        'taskslist': [
-        {
-            'taskid': 1,
-            'completed':true,
-            'name': 'Vaisselle'
+todoApp.controller("listManageCtrl", function($scope, $http) {
+ 
+// INITIALISATION : on récupère la liste des tâche depuis le serveur
+    $scope.lists = [];
+    $http.get("/get").then(
+        //success
+        function(retour) {
+            $scope.lists = retour.data;
         },
-        {
-            'taskid': 2,
-            'completed':false,
-            'name': 'Ménage'
-        },
-        {
-            'taskid': 3,
-            'completed':false,
-            'name': 'Linge'
+        // error
+        function(why) {
+            alert("oups, /get n'a pas marché : " + why.message);
         }
-        ]
-    },
+    );
+
+// FONCTION POUR METTRE A JOUR LA LISTE DES TACHES SUR LE SERVEUR
+    maj = function ()
     {
-        'listid': 2,
-        'name': 'Repas',
-        'taskslist': [
-        {
-            'taskid': 1,
-            'completed':false,
-            'name': 'Pizza'
-        },
-        {
-            'taskid': 2,
-            'completed':true,
-            'name': 'pates'
-        },
-        {
-            'taskid': 3,
-            'completed':false,
-            'name': 'Haricots'
-        }
-        ]
-    },
-    {
-        'listid': 3,
-        'name': 'Capitales',
-        'taskslist': [
-        {
-            'taskid': 1,
-            'completed':false,
-            'name': 'Paris'
-        },
-        {
-            'taskid': 2,
-            'completed':false,
-            'name': 'Rome'
-        },
-        {
-            'taskid': 5,
-            'completed':true,
-            'name': 'Madrid'
-        }
-        ]
-    }
-    ];
+        $http.post("/set", $scope.lists).then(
+            //success
+            function() {
+                alert("post = succes selon angular");
+            },
+            //echec
+            function(why) {
+                alert("oups, /set n'a pas marché : " + why.message);
+            }
+        );
+    };
 
-
-
-
-
+// GESTION AFFICHAGE DES LISTES
     $scope.listeAffichee = 0;
-
     $scope.click = function(listid){
         $scope.listeAffichee = listid;
     };
 
+
+// AJOUTER UNE TACHE
     $scope.ajouterTache = function(){
 
         // recherche de l'id de tache le plus haut
@@ -104,6 +64,7 @@ todoApp.controller("listManageCtrl", function($scope) {
         //alert(newId);
     };
 
+// AJOUTER UNE LISTE
     $scope.ajouterListe = function(){
 
         // recherche de l'id de liste le plus haut
@@ -129,6 +90,9 @@ todoApp.controller("listManageCtrl", function($scope) {
 
         // DEBUG
         //alert(newId);
+        
+        // MAJ de la liste sur le serveur
+        maj();
     };
 
 
