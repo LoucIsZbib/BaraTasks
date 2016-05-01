@@ -105,7 +105,7 @@ todoApp.controller("listManageCtrl", function($scope, $http) {
         for (var index = 0; index <$scope.lists.length; index++) {
             if($scope.lists[index].listid == listid) {
                 // suppression de cet élément
-                $scope.lists.splice(index);
+                $scope.lists.splice(index,1);
                 break;
             }
         
