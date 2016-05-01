@@ -21,7 +21,8 @@ todoApp.controller("listManageCtrl", function($scope, $http) {
         $http.post("/set", $scope.lists).then(
             //success
             function() {
-                alert("post = succes selon angular");
+                // DEBUG
+                //alert("post = succes selon angular");
             },
             //echec
             function(why) {
@@ -62,6 +63,9 @@ todoApp.controller("listManageCtrl", function($scope, $http) {
 
         // DEBUG
         //alert(newId);
+        
+        // MAJ de la liste sur le serveur
+        maj();
     };
 
 // AJOUTER UNE LISTE
@@ -95,7 +99,21 @@ todoApp.controller("listManageCtrl", function($scope, $http) {
         maj();
     };
 
+// SUPPRIMER UNE LISTE
+    $scope.deleteList = function(listid){
+        // recherche de l'élément ayant le listid
+        for (var index = 0; index <$scope.lists.length; index++) {
+            if($scope.lists[index].listid == listid) {
+                // suppression de cet élément
+                $scope.lists.splice(index);
+                break;
+            }
+        
+        }
 
+        // MAJ de la liste sur le serveur
+        maj();
+    };
 
 
 });

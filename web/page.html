@@ -35,8 +35,16 @@
                         ng-repeat="list in lists"
                         ng-click="click(list.listid);" 
                         ng-class="{listeActive: listeAffichee == list.listid}"
+                        ng-mouseenter="showTrash=true"
+                        ng-mouseleave="showTrash=false"
                         >
                         {{list.name}}
+                        <img 
+                            class="trash" 
+                            src="/img/trash-a.svg" alt="trash" 
+                            ng-show="showTrash"
+                            ng-click="deleteList(list.listid)"
+                            />
                     </li>
                 </ul>
 

@@ -1,6 +1,6 @@
 <?php
 
-$uri = $_SERVER[REQUEST_URI];
+$uri = $_SERVER['REQUEST_URI'];
 
 if($uri == "/")
 {
@@ -9,15 +9,15 @@ if($uri == "/")
 }
 else if ($uri == "/get")
 {
-    $tasklist = file_get_contents("data.json");
+    $tasklist = file_get_contents("../data/data.json");
     echo $tasklist;
 }
 else if ($uri == "/set")
 {
     $postdata = file_get_contents("php://input");
     //$request = json_decode($postdata);
-    file_put_contents("phpjson.".time(), $postdata); // marche
-    file_put_contents("data.json", $postdata);
+    file_put_contents("../data/data.json.".time(), $postdata); // marche
+    file_put_contents("../data/data.json", $postdata);
 }
 else
 {
