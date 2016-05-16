@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app="todoApp">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		
+		<title>La ToDoList du petit Louc</title>
+
+	        <!-- Bootstrap --
+	        <link href="css/bootstrap.min.css" rel="stylesheet">
+                <!-- <link href="css/dashboard.css" rel="stylesheet"> -->
+                <!-- -->
+
+                <!-- Angularjs -->
+                <script src="js/angular.min.js"></script>
+
+                <!-- TODO controleur -->
+                <script src="js/app.js"></script>
+
+                <!-- un peu de STYLE -->
+                <link href="css/style.less" rel="stylesheet/less">
+                <script src="js/less.min.js" type="text/javascript"></script>
+	</head>
+
+	<body ng-controller="listManageCtrl">    
+
+            <!-- SIDEBAR -->
+            <aside class="col-sm-3 col-md-2">
+
+                <!-- noms des listes -->
+                <ul>
+                    <li
+                        ng-repeat="list in lists"
+                        ng-click="click(list.listid);" 
+                        ng-class="{listeActive: listeAffichee == list.listid}"
+                        ng-mouseenter="showTrash=true"
+                        ng-mouseleave="showTrash=false"
+                        >
+                        {{list.name}}
+                        <img 
+                            class="trash" 
+                            src="/img/trash-a.svg" alt="trash" 
+                            ng-show="showTrash"
+                            ng-click="deleteList(list.listid)"
+                            />
+                    </li>
+                </ul>
+
+                <!-- ajouter une nouvelle liste -->
+                <form ng-submit="ajouterListe()">
+                    <input type="text" placeholder="Une nouvelle liste ?" ng-model="nouvelleListe" />
+                </form>
+
+            </aside>
+
+            <!-- MAIN SCREEN -->
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+                <!-- RAJOUTER UNE TACHE -->
+                <form ng-submit="ajouterTache()" ng-show="listeAffichee != 0">
+                    <input type="text" placeholder="Que dois-je faire ?" ng-model="nouvelleTache"/>
+                </form>
+    
+                <!-- LISTE DE TACHES -->
+                <ul ng-repeat="list in lists" ng-show="listeAffichee == {{list.listid}}" >
+                    <li ng-repeat="item in list.taskslist">
+                        <div class="checkboxContainer rouge">
+                            <div class="verticalAlign"></div>
+                            <input type="checkbox" class="checkbox" ng-model="item.completed"/>
+                        </div>
+                        <div class="verticalSep"></div>
+                        <input 
+                            type="text"
+                            class="taskname"
+                            ng-model="item.name"
+                            ng-class="{completed: item.completed}"
+                            ng-change="maj()"
+                             />
+                    </li>
+                </ul>
+                
+            </div>
+
+
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins)
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>--> 
+
+            <!-- Include all compiled plugins (below), or include individual files as needed -->
+            <script src="js/bootstrap.min.js"></script>
+
+	</body>
+</html>
+
+
