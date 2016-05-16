@@ -16,7 +16,7 @@ todoApp.controller("listManageCtrl", function($scope, $http) {
     );
 
 // FONCTION POUR METTRE A JOUR LA LISTE DES TACHES SUR LE SERVEUR
-    maj = function ()
+    $scope.maj = function ()
     {
         $http.post("/set", $scope.lists).then(
             //success
@@ -65,7 +65,7 @@ todoApp.controller("listManageCtrl", function($scope, $http) {
         //alert(newId);
         
         // MAJ de la liste sur le serveur
-        maj();
+        $scope.maj();
     };
 
 // AJOUTER UNE LISTE
@@ -96,8 +96,9 @@ todoApp.controller("listManageCtrl", function($scope, $http) {
         //alert(newId);
         
         // MAJ de la liste sur le serveur
-        maj();
+        $scope.maj();
     };
+
 
 // SUPPRIMER UNE LISTE
     $scope.deleteList = function(listid){
@@ -112,7 +113,7 @@ todoApp.controller("listManageCtrl", function($scope, $http) {
         }
 
         // MAJ de la liste sur le serveur
-        maj();
+        $scope.maj();
     };
 
 

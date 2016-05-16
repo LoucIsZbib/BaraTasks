@@ -71,7 +71,13 @@
                             <input type="checkbox" class="checkbox" ng-model="item.completed"/>
                         </div>
                         <div class="verticalSep"></div>
-                        <span class="taskname" ng-class="{completed: item.completed}">{{item.name}}</span>
+                        <input 
+                            type="text"
+                            class="taskname"
+                            ng-model="item.name"
+                            ng-class="{completed: item.completed}"
+                            ng-change="maj()"
+                             />
                     </li>
                 </ul>
                 
