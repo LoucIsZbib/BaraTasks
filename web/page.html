@@ -66,18 +66,24 @@
                 <!-- LISTE DE TACHES -->
                 <ul ng-repeat="list in lists" ng-show="listeAffichee == {{list.listid}}" >
                     <li ng-repeat="item in list.taskslist">
-                        <div class="checkboxContainer rouge">
-                            <div class="verticalAlign"></div>
-                            <input type="checkbox" class="checkbox" ng-model="item.completed"/>
+                        <div class="tasktable">
+                        
+                            <div class="checkboxContainer rouge">
+                                <div class="verticalAlign"></div>
+                                <input type="checkbox" class="checkbox" ng-model="item.completed"/>
+                            </div>
+                            
+                            <div class="verticalSep"></div>
+                            
+                            <input 
+                                type="text"
+                                class="taskname"
+                                ng-model="item.name"
+                                ng-class="{completed: item.completed}"
+                                ng-change="maj()"
+                            />
+                             
                         </div>
-                        <div class="verticalSep"></div>
-                        <input 
-                            type="text"
-                            class="taskname"
-                            ng-model="item.name"
-                            ng-class="{completed: item.completed}"
-                            ng-change="maj()"
-                             />
                     </li>
                 </ul>
                 

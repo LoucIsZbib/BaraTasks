@@ -12,22 +12,19 @@ body {
 // 
 
     .sidebar {
-
         // Hide for mobile, show later
         // display: none;
 
     }
 }
 
-.verticalAlign
-{
+.verticalAlign {
     vertical-align: middle;
     height: 100%;
     display: inline-block;
 }
 
-.trash
-{
+.trash {
     height: 26px;
     vertical-align: middle;
     padding-bottom: 5px;
@@ -110,77 +107,71 @@ body {
             padding: 2px 10px 2px 10px;
             box-sizing: border-box;
             width: 100%;
-            
+                        
         }
 
         ul
         {
-            padding: 0;
-       
+            padding: 0;       
             border-top: 1px #d9d9d9 solid;
 
             li
             {
-                .checkbox
-                {
-                    vertical-align: middle;
-                    margin-left: 10px;
-
-                }
-
                 background: #fff;
-                //line-height: 34px; // hauteur définie par verticalSep
                 list-style-type: none;
                 color: #4c4c4c;
                 font-size: 15px;
                 border: 1px #d9d9d9 solid;
                 border-top:0;
                 border-left:0;
+                
+                .tasktable   {
+                    display: table;
+                    width: 100%;
+                    
+                    .checkboxContainer {
+                        display: table-cell;
+                        vertical-align: middle;
+                        width: 45px;
+                        
+                        .checkbox {
+                            vertical-align: middle;
+                            margin-left: 10px;
+                        }
+                    }
+                    
+                    .verticalSep {
+                        width:2px;
+                        border-left: 1px #d9d9d9 solid;
+                        border-right: 1px #d9d9d9 solid;
+                        display: table-cell;
+                    }                   
+                }                
 
-
-                .checkboxContainer
-                {
-                    display: inline-block;
-                    height: 34px;
-                    vertical-align: middle;
-                }
-
-                .rouge
-                {
+                .rouge {
                     border-left: 4px solid #e15556; // rouge
                 }
-                .vert
-                {
+                .vert {
                     border-left-color: #9dd071; // vert
                 }
-                .bleu
-                {
+                .bleu {
                     border-left-color: #1bc1f5; // bleu
                 }
 
-
-                .taskname
-                {
-                    display: inline-block;
+                .taskname {
+                    display: table-cell;
+                    width: 100%;
+                    line-height: 34px;               
+                    padding-left: 10px;    
+                    color: #4c4c4c;                  
                     background: transparent;
-                    border: 0;
-                    color: #4c4c4c;
+                    border: 0;                              
                 }
 
-                .completed
-                {
+                .completed {
                     text-decoration: line-through;
                 }
-    
-                .verticalSep
-                {
-                    height:34px;
-                    width:2px;
-                    border-left: 1px #d9d9d9 solid;
-                    border-right: 1px #d9d9d9 solid;
-                    display: inline-block;
-                    vertical-align: middle;
-                }
+                
             }
         }   // .main ul
     }       // main
@@ -193,4 +184,3 @@ body {
     }       // @media .main
 
 
-//}           // body
