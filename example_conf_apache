@@ -1,0 +1,5 @@
+<Directory /path/to/baratasks>
+AllowOverride All
+Options Indexes FollowSymLinks
+Require all granted
+
