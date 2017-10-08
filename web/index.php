@@ -9,7 +9,15 @@ if($uri == "/")
 }
 else if ($uri == "/get")
 {
-    $tasklist = file_get_contents("../data/data.json");
+    $tasklist = "";
+    if( file_exists("../data/data.json") )
+    {
+        $tasklist = file_get_contents("../data/data.json");
+        if($tasklist == FALSE)
+        {
+            $tasklist = "";
+        }
+    }
     echo $tasklist;
 }
 else if ($uri == "/set")

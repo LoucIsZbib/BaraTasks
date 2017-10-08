@@ -7,7 +7,12 @@ todoApp.controller("listManageCtrl", function($scope, $http) {
     $http.get("/get").then(
         //success
         function(retour) {
-            $scope.lists = retour.data;
+            data_json = retour.data;
+            if(data_json == "")
+            {
+                data_json = [];
+            }
+            $scope.lists = data_json;
         },
         // error
         function(why) {
@@ -73,10 +78,14 @@ todoApp.controller("listManageCtrl", function($scope, $http) {
 
         // recherche de l'id de liste le plus haut
         var maxId = 0;
-        for (var i = 0; i < $scope.lists.length; i++) {
-            var id = $scope.lists[i].listid;
-            if (id > maxId) {
-                maxId = id;
+        if($scope.lists.length > 0)
+        {
+            // la liste n'est pas vide
+            for (var i = 0; i < $scope.lists.length; i++) {
+                var id = $scope.lists[i].listid;
+                if (id > maxId) {
+                    maxId = id;
+                }
             }
         }
 
