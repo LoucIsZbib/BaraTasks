@@ -1,1 +1,65 @@
-[{"listid":14,"name":"TODO LIST","taskslist":[]}]
+[
+{
+    'listid': 1,
+    'name': 'Nettoyage',
+    'taskslist': [
+    {
+        'taskid': 1,
+        'completed':true,
+        'name': 'Vaisselle'
+    },
+    {
+        'taskid': 2,
+        'completed':false,
+        'name': 'Ménage'
+    },
+    {
+        'taskid': 3,
+        'completed':false,
+        'name': 'Linge'
+    }
+    ]
+},
+{
+    'listid': 2,
+    'name': 'Repas',
+    'taskslist': [
+    {
+        'taskid': 1,
+        'completed':false,
+        'name': 'Pizza'
+    },
+    {
+        'taskid': 2,
+        'completed':true,
+        'name': 'pates'
+    },
+    {
+        'taskid': 3,
+        'completed':false,
+        'name': 'Haricots'
+    }
+    ]
+},
+{
+    'listid': 3,
+    'name': 'Capitales',
+    'taskslist': [
+    {
+        'taskid': 1,
+        'completed':false,
+        'name': 'Paris'
+    },
+    {
+        'taskid': 2,
+        'completed':false,
+        'name': 'Rome'
+    },
+    {
+        'taskid': 5,
+        'completed':true,
+        'name': 'Madrid'
+    }
+    ]
+}
+];
