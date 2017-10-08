@@ -1,5 +1,5 @@
     
-$scope.lists = [
+[
 {
     'listid': 1,
     'name': 'Nettoyage',
