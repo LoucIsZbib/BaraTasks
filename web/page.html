@@ -30,14 +30,14 @@
                         ng-repeat="list in lists"
                         ng-click="click(list.listid);" 
                         ng-class="{listeActive: listeAffichee == list.listid}"
-                        ng-mouseenter="showTrash=true"
-                        ng-mouseleave="showTrash=false"
+                        ng-mouseenter="showTrashlist=true"
+                        ng-mouseleave="showTrashlist=false"
                         >
                         {{list.name}}
                         <img 
                             class="trash" 
                             src="/img/trash-a.svg" alt="trash" 
-                            ng-show="showTrash"
+                            ng-show="showTrashlist"
                             ng-click="deleteList(list.listid)"
                             />
                     </li>
@@ -60,7 +60,7 @@
     
                 <!-- LISTE DE TACHES -->
                 <ul ng-repeat="list in lists" ng-show="listeAffichee == {{list.listid}}" >
-                    <li ng-repeat="item in list.taskslist" ng-mouseenter="showTrash2=true" ng-mouseleave="showTrash2=false">
+                    <li ng-repeat="item in list.taskslist" ng-mouseenter="showTrashtask=true" ng-mouseleave="showTrashtask=false">
                         <div class="tasktable">
                         
                             <div class="checkboxContainer rouge">
@@ -80,7 +80,7 @@
 			 <img
                             class="trash"
                             src="/img/trash-b.svg" align="right" alt="trash"
-                            ng-show="showTrash2"
+                            ng-show="showTrashtask"
                             ng-click="deleteTask"//A CODER
                             />
 
