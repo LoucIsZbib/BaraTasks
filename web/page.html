@@ -60,7 +60,7 @@
     
                 <!-- LISTE DE TACHES -->
                 <ul ng-repeat="list in lists" ng-show="listeAffichee == {{list.listid}}" >
-                    <li ng-repeat="item in list.taskslist">
+                    <li ng-repeat="item in list.taskslist" ng-mouseenter="showTrash2=true" ng-mouseleave="showTrash2=false">
                         <div class="tasktable">
                         
                             <div class="checkboxContainer rouge">
@@ -77,6 +77,13 @@
                                 ng-class="{completed: item.completed}"
                                 ng-change="maj()"
                             />
+			 <img
+                            class="trash"
+                            src="/img/trash-b.svg" align="right" alt="trash"
+                            ng-show="showTrash2"
+                            ng-click="deleteTask"//A CODER
+                            />
+
                              
                         </div>
                     </li>
