@@ -139,5 +139,18 @@ $scope.deleteTask = function(taskid){
         // MAJ de la liste sur le serveur
         $scope.maj();
     };
+// SUPPRIMER LES TACHES BARREES
+$scope.deleteTaskDone = function(taskdoneid){
+        // recherche des listes ayant le completed :true
+        for (var index = 0; index <$scope.lists[$scope.listeAffichee-1].taskslist.length; index++) {
+        while ($scope.lists[$scope.listeAffichee-1].taskslist[index].completed == true) {
+        //suppression des taches
+        $scope.lists[$scope.listeAffichee-1].taskslist.splice(index,1);
+        }
+}
 
+        //MAJ
+        $scope.maj();
+
+        };
 });
