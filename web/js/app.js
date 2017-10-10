@@ -125,5 +125,19 @@ todoApp.controller("listManageCtrl", function($scope, $http) {
         $scope.maj();
     };
 
+// SUPPRIMER UNE TACHE
+$scope.deleteTask = function(taskid){
+        // recherche de l'élément ayant le taskid
+        for (var index = 0; index <$scope.lists[$scope.listeAffichee-1].taskslist.length; index++) {
+            if($scope.lists[$scope.listeAffichee-1].taskslist[index].taskid == taskid) {
+                // suppression de cet élément
+                $scope.lists[$scope.listeAffichee-1].taskslist.splice(index,1);
+                break;
+            }
+        }
+
+        // MAJ de la liste sur le serveur
+        $scope.maj();
+    };
 
 });
