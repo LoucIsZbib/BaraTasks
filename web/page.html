@@ -17,6 +17,11 @@
                 <!-- un peu de STYLE -->
                 <link href="css/style.less" rel="stylesheet/less">
                 <script src="js/less.min.js" type="text/javascript"></script>
+
+                <!-- Pour gérer le calendrier pour les due date des taches -->
+                <link rel="stylesheet" type="text/css" href="css/no_border.css" />
+                <script type="text/javascript" src="js/jsSimpleDatePickr.2.1.js"></script>
+
 	</head>
 
 	<body ng-controller="listManageCtrl">    
@@ -77,13 +82,17 @@
                                 ng-class="{completed: item.completed}"
                                 ng-change="maj()"
                             />
-			 <img
-                            class="trash"
-                            src="/img/trash-b.svg" align="right" alt="trash"
-                            ng-show="showTrashtask"
-                            ng-click="deleteTask(item.taskid)"
-                            />
 
+		            <div id="calendarMain" class="calendarMain taskcell"></div>
+
+		            <div class="taskcell trashtask trashtaskdiv">
+				    <img
+					class="trashtask"
+					src="/img/trash-b.svg" align="right" alt="trash"
+					ng-show="showTrashtask"
+					ng-click="deleteTask(item.taskid)"
+				    />
+			    </div>
                              
                         </div>
                     </li>
@@ -96,6 +105,25 @@
                 
             </div>
 
+                            <script type="text/javascript">
+//<![CDATA[
+                            var myCalendar = new jsSimpleDatePickr();
+                            myCalendar.CalAdd({
+                                    'divId': 'calendarMain',
+                                    'dateMask': 'JJ/MM/AAAA',
+                                    'dateCentury': 20,
+                                    'titleMask': 'M AAAA',
+                                    'navType': '01',
+                                    'classTable': 'jsCalendar',
+                                    'classDay': 'day',
+                                    'classDaySelected': 'selectedDay',
+                                    'monthLst': ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+                                    'dayLst': ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                                    'hideOnClick': false,
+                                    'showOnLaunch': false
+                                    });
+//]]>
+                            </script>
 	</body>
 </html>
 

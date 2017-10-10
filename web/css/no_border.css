@@ -1,0 +1,88 @@
+/* DEBUT calendrier JS : jsSimpleDatePickr */
+.calendarMain{
+	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+	text-align: left;
+}
+.calendarMain:after{
+	content: " ";
+	display: block;
+	clear: both;
+}
+/* conteneur calendrier */
+.calendarMain > div{
+	width: 280px;
+	padding: 5px 10px 10px 10px;
+	font-size: 12px;
+}
+/* bouton d'affichage*/
+.calendarMain > input{
+	display: block;
+	height: 24px;
+	padding-top: 2px;
+	color: #333;
+	border: none;
+	font-family: "Courier New", Courier, mono;
+	font-size: 14px;
+}
+.calendarMain > input:hover{
+	background-color: maroon;
+	color: #fff;
+}
+/* navigation dans le calendrier */
+.calendarMain .calendarTitle{
+	position: absolute;
+	margin: 14px 0 0 0;
+	padding: 0;
+	width: 280px;
+	color: #333;
+	font-size: 14px;
+	text-align: center;
+}
+.calendarNav input{
+	position: relative;
+	margin: 5px 0 10px 0;
+	width: 20px;
+	background: none;
+	border: none;
+	color: #333;
+	font-size: 20px;
+}
+.calendarNav input:hover{
+	color: red;
+}
+.calendarNav .calendarNavML, .calendarNav .calendarNavYL{
+float: left;
+}
+.calendarNav .calendarNavMR, .calendarNav .calendarNavYR{
+	float: right;
+}
+/* calendrier */
+.jsCalendar{
+	color: #fff;
+	border-collapse: collapse;
+}
+.jsCalendar th{
+	color: #6c6c6c;
+	font-size: 14px;
+	font-weight: normal;
+	text-align: center;
+}
+.jsCalendar td{
+	padding: 0;
+	border: none;
+	width: 38px;
+	padding: 3px 0 3px 0;
+	color: #000;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
+}
+.jsCalendar .day:hover{
+	background-color: maroon;
+	color: #fff;
+}
+.jsCalendar .selectedDay{
+	background-color: red;
+	color: #fff;
+}
+/* FIN calendrier JS : jsSimpleDatePickr */
