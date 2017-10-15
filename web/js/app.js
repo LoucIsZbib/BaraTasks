@@ -1,39 +1,57 @@
-var todoApp = angular.module("todoApp", []);
+var todoApp = angular
+				.module("todoApp", ['moment-picker'])
+				.config(['momentPickerProvider', function (momentPickerProvider) {
+						momentPickerProvider.options({
+							locale : "fr",
+							today : true,
+							'min-view' : "year",
+							'max-view' : "day",
+							'start-view' : "month"
+							
+					});
+				}]);
+
+
+var local_or_remote = "local"
 
 todoApp.controller("listManageCtrl", function($scope, $http) {
  
 // INITIALISATION : on récupère la liste des tâche depuis le serveur
     $scope.lists = [];
-    $http.get("/get").then(
-        //success
-        function(retour) {
-            data_json = retour.data;
-            if(data_json == "")
-            {
-                data_json = [];
-            }
-            $scope.lists = data_json;
-        },
-        // error
-        function(why) {
-            alert("oups, /get n'a pas marché : " + why.message);
-        }
-    );
+	if (local_or_remote == "remote") {		
+		$http.get("/get").then(
+			//success
+			function(retour) {
+				data_json = retour.data;
+				if(data_json == "")
+				{
+					data_json = [];
+				}
+				$scope.lists = data_json;
+			},
+			// error
+			function(why) {
+				alert("oups, /get n'a pas marché : " + why.message);
+			}
+		);
+	}
 
 // FONCTION POUR METTRE A JOUR LA LISTE DES TACHES SUR LE SERVEUR
     $scope.maj = function ()
     {
-        $http.post("/set", $scope.lists).then(
-            //success
-            function() {
-                // DEBUG
-                //alert("post = succes selon angular");
-            },
-            //echec
-            function(why) {
-                alert("oups, /set n'a pas marché : " + why.message);
-            }
-        );
+		if (local_or_remote == "remote") {
+			$http.post("/set", $scope.lists).then(
+				//success
+				function() {
+					// DEBUG
+					//alert("post = succes selon angular");
+				},
+				//echec
+				function(why) {
+					alert("oups, /set n'a pas marché : " + why.message);
+				}
+			);
+		}
     };
 
 // GESTION AFFICHAGE DES LISTES
