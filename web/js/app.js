@@ -172,4 +172,7 @@ $scope.deleteTaskDone = function(taskdoneid){
         $scope.maj();
 
         };
+	
+// FLAG POUR LE TRI DES DATES
+$scope.changeFilter=false;
 });
