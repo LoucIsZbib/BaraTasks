@@ -7,10 +7,23 @@ var todoApp = angular
 							minView : "year",
 							maxView : "month",
 							startView : "month",
-							format : "DD/MM/YYYY"
+							format : "YYYY/MM/DD"
 							
 					});
-				}]);
+				}])
+				.filter('reverseDate', function() {
+                    return function(input) {
+                        var newDate = null;
+                        if (input != undefined) {
+                            var dateSplit = input.split("/");
+                            var year = dateSplit[0];
+                            var month = dateSplit[1];
+                            var day = dateSplit[2];
+                            newDate = day + "/" + month + "/" + year;
+                        }
+                        return newDate;
+                    };
+                });
 
 
 var local_or_remote = "remote"
@@ -173,7 +186,8 @@ $scope.deleteTaskDone = function(taskdoneid){
 
         };
 	
-// FLAG POUR LE TRI DES DATES
+// FLAGS POUR LE TRI DES TACHES
 $scope.order="";
 $scope.reverse=false;
+
 });
