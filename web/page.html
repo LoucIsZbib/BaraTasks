@@ -66,7 +66,7 @@
     
                 <!-- LISTE DE TACHES -->
                 <ul ng-repeat="list in lists" ng-show="listeAffichee == {{list.listid}}" >
-                    <li ng-repeat="item in list.taskslist | orderBy: !changeFilter ? '-duedate' : 'duedate'" ng-mouseenter="showTrashtask=true" ng-mouseleave="showTrashtask=false">
+                    <li ng-repeat="item in list.taskslist | orderBy: order" ng-mouseenter="showTrashtask=true" ng-mouseleave="showTrashtask=false">
 					
 						<!-- UNE TACHE -->
                         <div class="tasktable">
@@ -104,12 +104,15 @@
                         </div>
 						
                     </li>
+                    
 					<img
 						class="trash"
 						src="img/megadone.svg" align="left" alt="done"
 						ng-click="deleteTaskDone(item.completed)"
 					/>
-			 <div ng-click="changeFilter=!changeFilter">CLIC MOI</div>
+                    <div ng-click="order == 'duedate' ? order = '-duedate' : order = 'duedate'">Sort Date</div>
+                    <div ng-click="order == 'taskname' ? order = '-taskname' : order = 'taskname'">Sort Name</div>
+                    
                 </ul>
             </div>
 			
