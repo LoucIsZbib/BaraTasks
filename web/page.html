@@ -86,7 +86,11 @@
                                 ng-change="maj()"
                             />
 							
-							<div class="taskcell duedate" moment-picker="myDate" max-view="day" > {{ myDate }} </div>
+							<div class="taskcell duedate" >
+							    <span ng-class="{duedate_full : item.duedate, duedate_empty: !item.duedate}" moment-picker="item.duedate">
+                                    {{ item.duedate || 'due date ...' }}
+                                </span>
+							</div>
 
 							<div class="taskcell trashtask trashtaskdiv">
 								<img

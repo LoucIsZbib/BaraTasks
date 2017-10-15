@@ -154,7 +154,19 @@ body {
 
                     .duedate {
                         width: 150px;
-						background-color: #F6F6F6;
+						/*background-color: #F6F6F6;*/
+						box-sizing: border-box;
+						display: table-cell;
+						font-size: 0.9em;
+                    }
+                    .duedate_empty {
+                        opacity: 0.4;
+                    }
+                    .duedate_empty:hover {
+                        opacity: 0.8;
+                    }
+                    .duedate_full {
+                        opacity: 0.8;
                     }
 
 					.trashtaskdiv {
@@ -165,6 +177,9 @@ body {
 						vertical-align: middle;
 						margin-right: 10px;
 						opacity: 0.5;
+                    }
+                    .trashtask:hover {
+                        opacity: 0.8;
                     }
                 }                
 

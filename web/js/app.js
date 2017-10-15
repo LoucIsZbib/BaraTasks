@@ -4,15 +4,16 @@ var todoApp = angular
 						momentPickerProvider.options({
 							locale : "fr",
 							today : true,
-							'min-view' : "year",
-							'max-view' : "day",
-							'start-view' : "month"
+							minView : "year",
+							maxView : "month",
+							startView : "month",
+							format : "DD/MM/YYYY"
 							
 					});
 				}]);
 
 
-var local_or_remote = "local"
+var local_or_remote = "remote"
 
 todoApp.controller("listManageCtrl", function($scope, $http) {
  
