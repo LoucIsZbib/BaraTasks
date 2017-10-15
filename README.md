@@ -21,9 +21,9 @@ Front controller concept is used, please configure your web server (see example 
 * php
 * css + less
 
-##Icons
+## Icons
 Icons found on http://ionicons.com/
 
-##Script used :
+## Script used :
 Angular Moment Picker : https://github.com/indrimuska/angular-moment-picker
 
