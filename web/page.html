@@ -87,8 +87,11 @@
                             />
 							
 							<div class="taskcell duedate" >
-							    <span ng-class="{duedate_full : item.duedate, duedate_empty: !item.duedate}" moment-picker="item.duedate" change="maj()">
-                                    {{ (item.duedate | reverseDate) || 'Due date ..' }} 
+							    <span ng-class="{duedate_full : item.duedate, duedate_empty: !item.duedate}" ng-model="item.duedate" moment-picker="item.duedate" change="maj()">
+                                    {{ item.duedate.format('DD/MM/YYYY') || 'Due date ..' }} 
+                                </span>
+                                <span>
+                                    {{ item.duedate.fromNow() || 'Pas de due date' }}
                                 </span>
 							</div>
 
@@ -112,7 +115,7 @@
 					/>
                     <div ng-click="order == 'duedate' ? reverse = !reverse : order = 'duedate'">Sort Date</div>
                     <div ng-click="order == 'name' ? reverse = !reverse : order = 'name'">Sort Name</div>
-			<div ng-click="order = 'taskid'">Unsorted</div>		
+                    <div ng-click="order = 'taskid'">Unsorted</div>		
                     
                 </ul>
             </div>
