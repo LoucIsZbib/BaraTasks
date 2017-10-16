@@ -36,6 +36,17 @@ todoApp.filter('formatDate', function() {
         };
 });
 
+todoApp.filter('diffFromToday', function() {
+    return function(input) {
+            var deltaJours = null;
+            if (input != undefined) {
+                var aujourdhui = moment();
+                deltaJours = moment(input).diff(aujourdhui, 'days');
+            }
+            return deltaJours;
+        };
+});
+
 
 var local_or_remote = "remote"
 
