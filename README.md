@@ -23,6 +23,7 @@ Front controller concept is used, please configure your web server (see example 
 
 ## Icons
 Icons found on http://ionicons.com/
+               https://iconmonstr.com/
 
 ## Script used :
 Angular Moment Picker : https://github.com/indrimuska/angular-moment-picker
