@@ -10,20 +10,31 @@ var todoApp = angular
 							format : "YYYY/MM/DD"
 							
 					});
-				}])
-				.filter('reverseDate', function() {
-                    return function(input) {
-                        var newDate = null;
-                        if (input != undefined) {
-                            var dateSplit = input.split("/");
-                            var year = dateSplit[0];
-                            var month = dateSplit[1];
-                            var day = dateSplit[2];
-                            newDate = day + "/" + month + "/" + year;
-                        }
-                        return newDate;
-                    };
-                });
+				}]);
+				
+todoApp.filter('reverseDate', function() {
+        return function(input) {
+            var newDate = null;
+            if (input != undefined) {
+                var dateSplit = input.split("/");
+                var year = dateSplit[0];
+                var month = dateSplit[1];
+                var day = dateSplit[2];
+                newDate = day + "/" + month + "/" + year;
+            }
+            return newDate;
+        };
+    });
+    
+todoApp.filter('formatDate', function() {
+    return function(input) {
+            var newDate = null;
+            if (input != undefined) {
+                newDate = moment(input).format('DD/MM/YYYY');
+            }
+            return newDate;
+        };
+});
 
 
 var local_or_remote = "remote"

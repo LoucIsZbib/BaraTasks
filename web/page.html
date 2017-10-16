@@ -88,7 +88,7 @@
 							
 							<div class="taskcell duedate" >
 							    <span ng-class="{duedate_full : item.duedate, duedate_empty: !item.duedate}" ng-model="item.duedate" moment-picker="item.duedate" change="maj()">
-                                    {{ item.duedate.format('DD/MM/YYYY') || 'Due date ..' }} 
+                                    {{ (item.duedate | formatDate)|| 'Due date ..' }} 
                                 </span>
                                 <span>
                                     {{ item.duedate.fromNow() || 'Pas de due date' }}
