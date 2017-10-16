@@ -111,7 +111,8 @@
 						ng-click="deleteTaskDone(item.completed)"
 					/>
                     <div ng-click="order == 'duedate' ? reverse = !reverse : order = 'duedate'">Sort Date</div>
-                    <div ng-click="order == 'taskname' ? reverse = !reverse : order = 'taskname'">Sort Name</div>
+                    <div ng-click="order == 'name' ? reverse = !reverse : order = 'name'">Sort Name</div>
+			<div ng-click="order = 'taskid'">Unsorted</div>		
                     
                 </ul>
             </div>
