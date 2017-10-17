@@ -41,7 +41,7 @@ todoApp.filter('diffFromToday', function() {
             var deltaJours = null;
             if (input != undefined) {
                 var aujourdhui = moment();
-                deltaJours = moment(input).diff(aujourdhui, 'days');
+                deltaJours = (Math.ceil(moment(input).diff(aujourdhui, 'days')));
             }
             return deltaJours;
         };
