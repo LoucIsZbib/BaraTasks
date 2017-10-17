@@ -69,7 +69,7 @@
                     <li ng-repeat="item in list.taskslist | orderBy: order :reverse" ng-mouseenter="showTrashtask=true" ng-mouseleave="showTrashtask=false">
 					
 						<!-- UNE TACHE -->
-                        <div class="tasktable">
+                         <div class="tasktable" ng-class="{datered: {{item.duedate | diffFromToday}}<=1, dategreen: {{item.duedate | diffFromToday}}>3, dateorange: {{item.duedate | diffFromToday}}==2, dateyellow: {{item.duedate | diffFromToday}}==3}">
                         
                             <div class="checkboxContainer rouge">
                                 <div class="verticalAlign"></div>
@@ -88,7 +88,7 @@
 							
 							<div class="taskcell duedate" >
 							    <span ng-class="{duedate_full : item.duedate, duedate_empty: !item.duedate}" ng-model="item.duedate" moment-picker="item.duedate" change="maj()">
-                                    {{ (item.duedate | formatDate) || 'Due date ..' }} 
+                                    {{ (item.duedate | formatDate) || '0' }} 
                                 </span>
                                 <span>
                                     {{ (item.duedate | diffFromToday) || 'Pas de due date' }}
