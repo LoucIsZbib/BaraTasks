@@ -196,19 +196,20 @@ $scope.deleteTask = function(taskid){
         $scope.maj();
     };
 // SUPPRIMER LES TACHES BARREES
-$scope.deleteTaskDone = function(taskdoneid){
+$scope.deleteTaskDone = function(list){
         // recherche des listes ayant le completed :true
-        for (var index = 0; index <$scope.lists[$scope.listeAffichee-1].taskslist.length; index++) {
-        while ($scope.lists[$scope.listeAffichee-1].taskslist[index].completed == true) {
-        //suppression des taches
-        $scope.lists[$scope.listeAffichee-1].taskslist.splice(index,1);
+        for (var index = (list.taskslist.length-1); index >= 0; index--) {
+            // parcourir toute la liste
+            if (list.taskslist[index].completed == true) {
+                //suppression de la tache
+                list.taskslist.splice(index,1);
+            }
         }
-}
 
         //MAJ
         $scope.maj();
 
-        };
+    };
 	
 // FLAGS POUR LE TRI DES TACHES
 $scope.order="";
