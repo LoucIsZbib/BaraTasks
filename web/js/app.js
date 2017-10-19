@@ -42,7 +42,9 @@ todoApp.filter('diffFromToday', function() {
             if (input != undefined) {
                 var aujourdhui = moment();
                  deltaJours = moment(input).startOf('day').diff(aujourdhui.startOf('day'), 'days', true);
-            }
+            } else {
+		 deltaJours = 9999
+	    };
             return deltaJours;
         };
 });
