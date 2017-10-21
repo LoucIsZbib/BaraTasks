@@ -10,6 +10,7 @@
 
                 <!-- Angularjs -->
                 <script src="js/angular.min.js"></script>
+                <script src="js/angular-sanitize.min.js"></script>
 
                 <!-- TODO controleur -->
                 <script src="js/app.js"></script>
@@ -81,18 +82,20 @@
                             <input 
                                 type="text"
                                 class="taskname"
+                                ng-show="inEdition"
                                 ng-model="item.name"
                                 ng-class="{completed: item.completed}"
                                 ng-change="maj()"
+                                ng-blur="inEdition = false"
                             />
+                            <span class="taskname"ng-hide="inEdition" ng-click="inEdition = true" ng-bind-html="item.name | linky"></span>
+                            
 							
 							<div class="taskcell duedate" >
 							    <span ng-class="{duedate_full : item.duedate, duedate_empty: !item.duedate}" ng-model="item.duedate" moment-picker="item.duedate" change="maj()">
                                     {{ (item.duedate | formatDate) || '0' }} 
                                 </span>
-                                <span>
-                                    {{ (item.duedate | diffFromToday) || 'Pas de due date' }}
-                                </span>
+                                <span ng-bind-html="urlFormatee"></span>
 							</div>
 
 							<div class="taskcell trashtask trashtaskdiv">

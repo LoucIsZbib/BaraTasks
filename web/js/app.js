@@ -1,5 +1,5 @@
 var todoApp = angular
-				.module("todoApp", ['moment-picker'])
+				.module("todoApp", ['moment-picker', 'ngSanitize'])
 				.config(['momentPickerProvider', function (momentPickerProvider) {
 						momentPickerProvider.options({
 							locale : "fr",
@@ -11,20 +11,6 @@ var todoApp = angular
 							
 					});
 				}]);
-				
-todoApp.filter('reverseDate', function() {
-        return function(input) {
-            var newDate = null;
-            if (input != undefined) {
-                var dateSplit = input.split("/");
-                var year = dateSplit[0];
-                var month = dateSplit[1];
-                var day = dateSplit[2];
-                newDate = day + "/" + month + "/" + year;
-            }
-            return newDate;
-        };
-    });
     
 todoApp.filter('formatDate', function() {
     return function(input) {
@@ -35,6 +21,7 @@ todoApp.filter('formatDate', function() {
             return newDate;
         };
 });
+
 
 todoApp.filter('diffFromToday', function() {
     return function(input) {
@@ -52,7 +39,7 @@ todoApp.filter('diffFromToday', function() {
 
 var local_or_remote = "remote"
 
-todoApp.controller("listManageCtrl", function($scope, $http) {
+todoApp.controller("listManageCtrl", function($scope, $http, $filter) {
  
 // INITIALISATION : on récupère la liste des tâche depuis le serveur
     $scope.lists = [];
@@ -214,5 +201,8 @@ $scope.deleteTaskDone = function(list){
 // FLAGS POUR LE TRI DES TACHES
 $scope.order="";
 $scope.reverse=false;
+
+
+$scope.urlFormatee = $filter('linky')("url à formater http://google.fr");
 
 });
