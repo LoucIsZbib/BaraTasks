@@ -44,7 +44,7 @@ todoApp.directive('setFocus',function(){
                          //alert(element.attr('id'));
                document.querySelector('#' + attrs.setFocus).focus();
            })
-        };
+        }
       };
 });
 
