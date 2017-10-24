@@ -78,18 +78,20 @@
                             </div>
                             
                             <div class="verticalSep"></div>
-                            
+                            <form ng-submit="inEdition = false" ng-show="inEdition" ng-mouseleave="inEdition = false">
                             <input 
+                                id="item.taskid"
                                 type="text"
                                 class="taskname"
-                                ng-show="inEdition"
                                 ng-model="item.name"
                                 ng-class="{completed: item.completed}"
                                 ng-change="maj()"
-                                ng-blur="inEdition = false"
+
                             />
-                            <span class="taskname"ng-hide="inEdition" ng-click="inEdition = true" ng-bind-html="item.name | linky"></span>
-                            
+				 </form>
+                            <span class="taskname" ng-hide="inEdition" ng-bind-html="item.name | linky:'_blank'"></span>
+                           <button id='btn' ng-click="inEdition = true" set-focus='id' >Edit</button>
+
 							
 							<div class="taskcell duedate" >
 							    <span ng-class="{duedate_full : item.duedate, duedate_empty: !item.duedate}" ng-model="item.duedate" moment-picker="item.duedate" change="maj()">
