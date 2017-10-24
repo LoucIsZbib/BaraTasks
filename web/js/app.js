@@ -54,6 +54,11 @@ var local_or_remote = "remote"
 
 todoApp.controller("listManageCtrl", function($scope, $http, $filter) {
  
+    $scope.giveFocus = function(idToFocus) {
+    
+        document.getElementById(idToFocus).focus();
+    };
+ 
 // INITIALISATION : on récupère la liste des tâche depuis le serveur
     $scope.lists = [];
 	if (local_or_remote == "remote") {		

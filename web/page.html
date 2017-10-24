@@ -68,7 +68,7 @@
                 <!-- LISTE DE TACHES -->
                 <ul ng-repeat="list in lists" ng-show="listeAffichee == {{list.listid}}" >
                 
-                    <li ng-repeat="item in list.taskslist | orderBy: order :reverse" ng-mouseenter="showTrashtask=true" ng-mouseleave="showTrashtask=false">
+                    <li ng-repeat="item in list.taskslist | orderBy: order :reverse" ng-mouseenter="showTrashtask=true" ng-mouseleave="showTrashtask=false"> 
                     
                         <!-- UNE TACHE -->
                         <div class="tasktable" ng-class="
@@ -86,8 +86,8 @@
                             
                             <div class="verticalSep"></div>
                             
-                            <button id='btn' ng-click="inEdition = true" set-focus='{{item.taskid}}' >Edit</button>
-                            <form ng-submit="inEdition = false" ng-mouseleave="inEdition = false">
+                            <button id='btn' ng-mousedown="inEdition = true" ng-mouseup="giveFocus(item.taskid)"> <!-- set-focus='{{item.taskid}}'> --> Edit</button>
+                            <form ng-submit="inEdition = false" ng-show="inEdition" ng-mouseleave="inEdition = false">
                                 <input 
                                     id="{{item.taskid}}"
                                     type="text"
