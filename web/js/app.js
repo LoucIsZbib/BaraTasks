@@ -41,8 +41,9 @@ todoApp.directive('setFocus',function(){
      return {
         link:  function(scope, element, attrs){
           element.bind('click',function(){
-                         //alert(element.attr('id'));
-               document.querySelector('#' + attrs.setFocus).focus();
+                //alert(attrs.setFocus);
+               //document.querySelector('#' + attrs.setFocus).focus();
+               document.getElementById(attrs.setFocus).focus();
            })
         }
       };
