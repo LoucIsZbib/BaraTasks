@@ -37,6 +37,18 @@ todoApp.filter('diffFromToday', function() {
 });
 
 
+todoApp.directive('setFocus',function(){
+     return {
+        link:  function(scope, element, attrs){
+          element.bind('click',function(){
+                         //alert(element.attr('id'));
+               document.querySelector('#' + attrs.setFocus).focus();
+           })
+        };
+      };
+});
+
+
 var local_or_remote = "remote"
 
 todoApp.controller("listManageCtrl", function($scope, $http, $filter) {
