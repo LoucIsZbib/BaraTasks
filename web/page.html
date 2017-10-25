@@ -29,7 +29,7 @@
     <body ng-controller="listManageCtrl">    
 
             <!-- SIDEBAR -->
-            <aside class="col-sm-3 col-md-2">
+            <aside class="sidebar">
 
                 <!-- noms des listes -->
                 <ul>
@@ -42,7 +42,7 @@
                         >
                         {{list.name}}
                         <img 
-                            class="trash" 
+                            class="trashList" 
                             src="img/trash-a.svg" alt="trash" 
                             ng-show="showTrashlist"
                             ng-click="deleteList(list.listid)"
@@ -58,7 +58,7 @@
             </aside>
 
             <!-- MAIN SCREEN -->
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="main">
 
                 <!-- RAJOUTER UNE TACHE -->
                 <form ng-submit="ajouterTache()" ng-show="listeAffichee != 0">
@@ -66,62 +66,70 @@
                 </form>
     
                 <!-- LISTE DE TACHES -->
-                <ul ng-repeat="list in lists" ng-show="listeAffichee == {{list.listid}}" >
+                <ul class="liste" ng-repeat="list in lists" ng-show="listeAffichee == {{list.listid}}" >
                 
-                    <li ng-repeat="item in list.taskslist | orderBy: order :reverse" ng-mouseenter="showTrashtask=true" ng-mouseleave="showTrashtask=false"> 
-                    
-                        <!-- UNE TACHE -->
-                        <div class="tasktable" ng-class="
-                                            {datered: (item.duedate | diffFromToday)<=1,
-                                             dategreen: (item.duedate | diffFromToday)>3,
-                                             dateorange: (item.duedate | diffFromToday)==2,
-                                             dateyellow: (item.duedate | diffFromToday)==3,
-                                             datewhite: (item.duedate | diffFromToday)==9999}
-                                            ">
+                    <!-- UNE TACHE -->
+                    <li 
+                        ng-repeat="item in list.taskslist | orderBy: order :reverse"                      
+                        ng-mouseenter="showTrashtask=true"
+                        ng-mouseleave="showTrashtask=false"
+                        class="tache"
+                        ng-class="
+                            {datered: (item.duedate | diffFromToday)<=1,
+                             dategreen: (item.duedate | diffFromToday)>3,
+                             dateorange: (item.duedate | diffFromToday)==2,
+                             dateyellow: (item.duedate | diffFromToday)==3,
+                             datewhite: (item.duedate | diffFromToday)==9999}
+                            "
+                        >
                         
-                            <div class="checkboxContainer rouge">
-                                <div class="verticalAlign"></div>
-                                <input type="checkbox" class="checkbox" ng-model="item.completed" ng-change="maj()"/>
-                            </div>
-                            
-                            <div class="verticalSep"></div>
-                            
-                            <button id='btn' ng-mousedown="inEdition = true" ng-mouseup="giveFocus(item.taskid)"> <!-- set-focus='{{item.taskid}}'> --> Edit</button>
-                            <form ng-submit="inEdition = false" ng-show="inEdition" ng-mouseleave="inEdition = false">
-                                <input 
-                                    id="{{item.taskid}}"
-                                    type="text"
-                                    class="taskname"
-                                    ng-model="item.name"
-                                    ng-class="{completed: item.completed}"
-                                    ng-change="maj()"
-                                />
-                            </form>
-                            <span class="taskname" ng-hide="inEdition" ng-bind-html="item.name | linky:'_blank'"></span>
-                            
-
-                            
-                            <div class="taskcell duedate" >
-                                <span ng-class="{duedate_full : item.duedate, duedate_empty: !item.duedate}" ng-model="item.duedate" moment-picker="item.duedate" change="maj()">
-                                    {{ (item.duedate | formatDate) || '0' }} 
-                                </span>
-                                <span ng-bind-html="urlFormatee"></span>
-                            </div>
-
-                            <div class="taskcell trashtask trashtaskdiv">
-                                <img
-                                    class="trashtask"
-                                    src="img/trash-b.svg" align="right" alt="trash"
-                                    ng-show="showTrashtask"
-                                    ng-click="deleteTask(item.taskid)"
-                                />
-                            </div>
-                             
+                        <div class="checkboxContainer rouge">
+                            <div class="verticalAlign"></div>
+                            <input type="checkbox" class="checkbox" ng-model="item.completed" ng-change="maj()"/>
                         </div>
+                            
+                        <div class="verticalSep"></div>
+                            
+                        
+                        <form 
+                            ng-submit="inEdition = false"
+                            ng-show="inEdition"
+                            ng-mouseenter="inEdition = true; cancelFinishEdit()"
+                            ng-mouseleave="finishEditDelayed()"                                    
+                            >
+                            <input 
+                                id="{{list.listid+ '_' + item.taskid}}"
+                                type="text"
+                                class="taskname"
+                                ng-model="item.name"
+                                ng-class="{completed: item.completed}"
+                                ng-model-options="{ debounce: 1500 }"
+                                ng-change="maj()"
+                            />
+                        </form>
+                        <span class="taskname" ng-hide="inEdition" ng-bind-html="item.name | linky:'_blank'"></span>
+                        
+                        <button class="edit" id='btn' ng-mousedown="inEdition = true" ng-mouseup="giveFocus(list.listid + '_' + item.taskid)">Edit</button>
+
+                        
+                        <span class="duedate" ng-class="{duedate_full : item.duedate, duedate_empty: !item.duedate}" ng-model="item.duedate" moment-picker="item.duedate" change="maj()">
+                            {{ (item.duedate | formatDate) || '0' }} 
+                        </span>
+
+
+                        <div class="trashtaskdiv">
+                            <img
+                                class="trashtask"
+                                src="img/trash-b.svg" align="right" alt="trash"
+                                ng-show="showTrashtask"
+                                ng-click="deleteTask(item.taskid)"
+                            />
+                        </div>
+                             
                         
                     </li>
                     
-                    <li class="tasktable">
+                    <li class="userControls">
                         <!-- user controls -->
                         <img
                             class="trash taskcell"
