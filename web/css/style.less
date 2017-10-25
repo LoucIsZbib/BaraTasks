@@ -96,6 +96,7 @@ body {
         padding: 0;       
         border-top: 1px #d9d9d9 solid;
         display: table;
+        width: 100%;
 
         // une tache
         .tache
@@ -133,10 +134,14 @@ body {
                 display: table-cell;
                 vertical-align: middle;
                 width: 45px;
+                text-align: center;
 
                 .checkbox {
+                    display: inline-block;
                     vertical-align: middle;
-                    margin-left: 10px;
+                    //margin-left: 10px;
+                    //margin:auto;
+                    
                 }
             
                 .verticalAlign {
@@ -164,9 +169,10 @@ body {
                     display: table-cell;
             }  
             
+            // gérer l'affichage du nom de la tache
             .taskname {
                 display: table-cell;
-                width: 100%;
+                //width: 100%;
                 line-height: 34px;               
                 padding-left: 10px;    
                 color: #4c4c4c;                  
@@ -181,12 +187,14 @@ body {
             
             // gérer la due date
             .duedate {
-                width: 300px;
+                width: 100px;
                 /*background-color: #F6F6F6;*/
                 box-sizing: border-box;
                 display: table-cell;
                 font-size: 0.9em;
                 vertical-align: middle;
+                //margin: auto;
+                text-align: center;
             }
             .duedate_empty {
                 opacity: 0.4;
@@ -197,15 +205,23 @@ body {
             .duedate_full {
                 opacity: 0.8;
             }
+            
+            //bouton pour éditer le nom de la tache
+            .edit {
+                display: table-cell;
+                width: 50px;
+                vertical-align: middle;
+            }
 
             // gérer la poubelle sur une tache
             .trashtaskdiv {
                 // on garde un div pour avoir l'espacement nécessaire meme quand la poubelle n'est pas affichée
                 display: table-cell;
                 width: 40px;
+                vertical-align:middle;
             
                 .trashtask {
-					vertical-align: middle;
+					//vertical-align: middle;
 					margin-right: 10px;
 					opacity: 0.5;
                 }

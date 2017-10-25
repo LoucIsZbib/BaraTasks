@@ -95,21 +95,33 @@
                             ng-submit="inEdition = false"
                             ng-show="inEdition"
                             ng-mouseenter="inEdition = true; cancelFinishEdit()"
-                            ng-mouseleave="finishEditDelayed()"                                    
+                            ng-mouseleave="finishEditDelayed()"        
+                            class="taskname"                            
                             >
                             <input 
                                 id="{{list.listid+ '_' + item.taskid}}"
                                 type="text"
-                                class="taskname"
                                 ng-model="item.name"
                                 ng-class="{completed: item.completed}"
                                 ng-model-options="{ debounce: 1500 }"
                                 ng-change="maj()"
                             />
                         </form>
-                        <span class="taskname" ng-hide="inEdition" ng-bind-html="item.name | linky:'_blank'"></span>
+                        <span 
+                                class="taskname"
+                                ng-class="{completed: item.completed}"
+                                ng-hide="inEdition" 
+                                ng-bind-html="item.name | linky:'_blank'"
+                            ></span>
                         
-                        <button class="edit" id='btn' ng-mousedown="inEdition = true" ng-mouseup="giveFocus(list.listid + '_' + item.taskid)">Edit</button>
+                        <div 
+                            class="edit"
+                            id='btn'
+                            ng-mousedown="inEdition = true"
+                            ng-mouseup="giveFocus(list.listid + '_' + item.taskid)"
+                            >
+                            Edit
+                        </div>
 
                         
                         <span class="duedate" ng-class="{duedate_full : item.duedate, duedate_empty: !item.duedate}" ng-model="item.duedate" moment-picker="item.duedate" change="maj()">
