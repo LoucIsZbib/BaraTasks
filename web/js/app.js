@@ -37,26 +37,21 @@ todoApp.filter('diffFromToday', function() {
 });
 
 
-todoApp.directive('setFocus',function(){
-     return {
-        link:  function(scope, element, attrs){
-          element.bind('click',function(){
-                //alert(attrs.setFocus);
-               //document.querySelector('#' + attrs.setFocus).focus();
-               document.getElementById(attrs.setFocus).focus();
-           })
-        }
-      };
-});
-
-
 var local_or_remote = "remote"
 
-todoApp.controller("listManageCtrl", function($scope, $http, $filter) {
+todoApp.controller("listManageCtrl", function($scope, $http, $filter, $timeout) {
  
     $scope.giveFocus = function(idToFocus) {
     
         document.getElementById(idToFocus).focus();
+    };
+    
+    var timerFinishEdit = null;
+    $scope.edit = false
+    $scope.finishEditDelayed = function() {
+        timer = $timeout(function () {
+            $scope.edit = false;
+        }, 1000);
     };
  
 // INITIALISATION : on récupère la liste des tâche depuis le serveur
@@ -220,7 +215,5 @@ $scope.deleteTaskDone = function(list){
 $scope.order="";
 $scope.reverse=false;
 
-
-$scope.urlFormatee = $filter('linky')("url à formater http://google.fr");
 
 });
