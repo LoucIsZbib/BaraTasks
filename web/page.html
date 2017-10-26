@@ -107,6 +107,7 @@
                                 ng-change="maj()"
                             />
                         </form>
+                        
                         <span 
                                 class="taskname"
                                 ng-class="{completed: item.completed}"
@@ -143,14 +144,33 @@
                     
                     <li class="userControls">
                         <!-- user controls -->
-                        <img
-                            class="trash taskcell"
-                            src="img/megadone.svg" align="left" alt="done"
-                            ng-click="deleteTaskDone(list)"
-                        />
-                        <div class="taskcell" ng-click="order == 'duedate' ? reverse = !reverse : order = 'duedate'">Sort Date</div>
-                        <div class="taskcell" ng-click="order == 'name' ? reverse = !reverse : order = 'name'">Sort Name</div>
-                        <div class="taskcell" ng-click="order = 'taskid'">Unsorted</div>
+                
+                        <div class="checkboxContainer">
+                            <img
+                                class="trash"
+                                src="img/megadone.svg" align="left" alt="done"
+                                ng-click="deleteTaskDone(list)"
+                            />
+                        </div>
+                        
+                        <span class="verticalSep">
+                            <!-- de la place pour verticalSep -->
+                        </span>
+                        
+                        <span class="taskname"  ng-click="order == 'name' ? reverse = !reverse : order = 'name'">
+                            <!-- de la place pour taskname -->
+                            Sort Name
+                        </span>
+                        
+                        <span class="edit"ng-click="order = 'taskid'">Unsorted</span>
+                        
+                        <div class="duedate" ng-click="order == 'duedate' ? reverse = !reverse : order = 'duedate'">
+                            Sort Date
+                        </div>
+                        
+                        <span class="trashtaskdiv">
+                            <!-- de la place pour verticalSep -->
+                        </span>
                     </li>
                     
                 </ul>
