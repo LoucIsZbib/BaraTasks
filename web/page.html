@@ -121,7 +121,7 @@
                             ng-mousedown="inEdition = true"
                             ng-mouseup="giveFocus(list.listid + '_' + item.taskid)"
                             >
-                            Edit
+                            <img src="img/edit.svg" alt="edit" />
                         </div>
 
                         
@@ -159,13 +159,15 @@
                         
                         <span class="taskname"  ng-click="order == 'name' ? reverse = !reverse : order = 'name'">
                             <!-- de la place pour taskname -->
-                            Sort Name
+                            <img src="img/arrow-down.svg" alt="arrow-down" />
+                            <img src="img/arrow-up.svg" alt="arrow-up" />
                         </span>
                         
                         <span class="edit"ng-click="order = 'taskid'">Unsorted</span>
                         
                         <div class="duedate" ng-click="order == 'duedate' ? reverse = !reverse : order = 'duedate'">
-                            Sort Date
+                            <img src="img/arrow-down.svg" alt="arrow-down" />
+                            <img src="img/arrow-up.svg" alt="arrow-up" />
                         </div>
                         
                         <span class="trashtaskdiv">
