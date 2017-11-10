@@ -244,6 +244,29 @@ body {
         .datewhite {
             background-color : white;
         }
+        
+        // pour gérer les commentaires dans le style pop-up
+        .comment {
+            position:absolute;
+            z-index: 1;
+            
+            
+            visibility: hidden;
+            
+            color: #eee;
+            background-color: RGBA(51, 57, 61, 0.8);
+            //border: 1px RGBA(51, 57, 61, 0.3) solid;
+            border-radius: 0.8em;
+            
+            padding: 1em 3em;
+
+            
+        }
+        
+        .taskname:hover .comment{
+            visibility: visible;    
+        }
+        
 
         // poiur gérer les boutons de commandes (mégadone, etc..)
         .userControls

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         
-        <title>La ToDoList du petit Louc</title>
+        <title>Baratasks, une todolist simple qui déchire</title>
 
                 <!-- Angularjs -->
                 <script src="js/angular.min.js"></script>
@@ -105,12 +105,23 @@
                             />
                         </form>
                         
-                        <span 
-                                class="taskname"
-                                ng-class="{completed: item.completed}"
-                                ng-hide="inEdition" 
-                                ng-bind-html="item.name | linky:'_blank'"
-                            ></span>
+                        <div class="taskname">
+                            <span 
+                                    
+                                    ng-class="{completed: item.completed}"
+                                    ng-hide="inEdition" 
+                                    ng-bind-html="item.name | linky:'_blank'"
+                                    ng-mouseover="showComment = true"
+                                    ng-mouseleave="showComment = false"
+                            >
+                                
+                            </span>
+                            
+                            <div class="comment">
+                                    BLABLA un commentaire
+                            </div>
+                            
+                        </div>
                         
                         <div 
                             class="edit"
@@ -120,6 +131,8 @@
                             >
                             <img src="img/edit.svg" alt="edit" />
                         </div>
+                        
+
 
                         
                         <span class="duedate" ng-class="{duedate_full : item.duedate, duedate_empty: !item.duedate}" ng-model="item.duedate" moment-picker="item.duedate" change="maj()">
