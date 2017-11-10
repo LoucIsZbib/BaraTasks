@@ -95,21 +95,34 @@
                             ng-submit="inEdition = false"
                             ng-show="inEdition"
                             ng-mouseenter="inEdition = true; cancelFinishEdit()"
-                            ng-mouseleave="finishEditDelayed()"                                    
+                            ng-mouseleave="finishEditDelayed()"        
+                            class="taskname"                            
                             >
                             <input 
                                 id="{{list.listid+ '_' + item.taskid}}"
                                 type="text"
-                                class="taskname"
                                 ng-model="item.name"
                                 ng-class="{completed: item.completed}"
                                 ng-model-options="{ debounce: 1500 }"
                                 ng-change="maj()"
                             />
                         </form>
-                        <span class="taskname" ng-hide="inEdition" ng-bind-html="item.name | linky:'_blank'"></span>
                         
-                        <button class="edit" id='btn' ng-mousedown="inEdition = true" ng-mouseup="giveFocus(list.listid + '_' + item.taskid)">Edit</button>
+                        <span 
+                                class="taskname"
+                                ng-class="{completed: item.completed}"
+                                ng-hide="inEdition" 
+                                ng-bind-html="item.name | linky:'_blank'"
+                            ></span>
+                        
+                        <div 
+                            class="edit"
+                            id='btn'
+                            ng-mousedown="inEdition = true"
+                            ng-mouseup="giveFocus(list.listid + '_' + item.taskid)"
+                            >
+                            <img src="img/edit.svg" alt="edit" />
+                        </div>
 
                         
                         <span class="duedate" ng-class="{duedate_full : item.duedate, duedate_empty: !item.duedate}" ng-model="item.duedate" moment-picker="item.duedate" change="maj()">
@@ -131,14 +144,35 @@
                     
                     <li class="userControls">
                         <!-- user controls -->
-                        <img
-                            class="trash taskcell"
-                            src="img/megadone.svg" align="left" alt="done"
-                            ng-click="deleteTaskDone(list)"
-                        />
-                        <div class="taskcell" ng-click="order == 'duedate' ? reverse = !reverse : order = 'duedate'">Sort Date</div>
-                        <div class="taskcell" ng-click="order == 'name' ? reverse = !reverse : order = 'name'">Sort Name</div>
-                        <div class="taskcell" ng-click="order = 'taskid'">Unsorted</div>
+                
+                        <div class="checkboxContainer rouge">
+                            <img
+                                class="trash"
+                                src="img/megadone.svg" align="center" alt="done"
+                                ng-click="deleteTaskDone(list)"
+                            />
+                        </div>
+                        
+                        <span class="verticalSep">
+                            <!-- de la place pour verticalSep -->
+                        </span>
+                        
+                        <span class="taskname"  ng-click="order == 'name' ? reverse = !reverse : order = 'name'">
+                            <!-- de la place pour taskname -->
+                            <img src="img/sortname.svg" alt="sortname" />
+                        </span>
+                        
+                        <span class="edit"ng-click="order = 'taskid'">
+                            <img src="img/unsorted.svg" alt="sortname" />
+                        </span>
+                        
+                        <div class="duedate" ng-click="order == 'duedate' ? reverse = !reverse : order = 'duedate'">
+                            <img src="img/sortdate.svg" alt="arrow-down" />
+                        </div>
+                        
+                        <span class="trashtaskdiv">
+                            <!-- de la place pour verticalSep -->
+                        </span>
                     </li>
                     
                 </ul>

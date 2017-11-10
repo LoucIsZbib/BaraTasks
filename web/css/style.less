@@ -96,9 +96,10 @@ body {
         padding: 0;       
         border-top: 1px #d9d9d9 solid;
         display: table;
+        width: 100%;
 
         // une tache
-        .tache
+        li
         {
             background: #fff;
             list-style-type: none;
@@ -109,34 +110,20 @@ body {
             border-left:0;
             display: table-row;
             width: 100%;
-            
-            
-            // surlignage pour marquer la proximité des échéances
-            .datered {
-                background-color : red;
-            }
-            .dategreen {
-                background-color : green;
-            }
-            .dateorange {
-                background-color : orange;
-            }
-            .dateyellow {
-                background-color : yellow;
-            }
-            .datewhite {
-                background-color : white;
-            }
 
             // checkbox
             .checkboxContainer {
                 display: table-cell;
                 vertical-align: middle;
                 width: 45px;
+                text-align: center;
 
                 .checkbox {
+                    display: inline-block;
                     vertical-align: middle;
-                    margin-left: 10px;
+                    //margin-left: 10px;
+                    //margin:auto;
+                    
                 }
             
                 .verticalAlign {
@@ -164,9 +151,10 @@ body {
                     display: table-cell;
             }  
             
+            // gérer l'affichage du nom de la tache
             .taskname {
                 display: table-cell;
-                width: 100%;
+                //width: 100%;
                 line-height: 34px;               
                 padding-left: 10px;    
                 color: #4c4c4c;                  
@@ -181,12 +169,14 @@ body {
             
             // gérer la due date
             .duedate {
-                width: 300px;
+                width: 160px;
                 /*background-color: #F6F6F6;*/
                 box-sizing: border-box;
                 display: table-cell;
                 font-size: 0.9em;
                 vertical-align: middle;
+                //margin: auto;
+                text-align: center;
             }
             .duedate_empty {
                 opacity: 0.4;
@@ -197,17 +187,29 @@ body {
             .duedate_full {
                 opacity: 0.8;
             }
+            
+            //bouton pour éditer le nom de la tache
+            .edit {
+                display: table-cell;
+                width: 50px;
+                vertical-align: middle;
+                text-align: center;
+            }
+            .edit img:hover {
+                opacity: 0.8;
+            }
 
             // gérer la poubelle sur une tache
             .trashtaskdiv {
                 // on garde un div pour avoir l'espacement nécessaire meme quand la poubelle n'est pas affichée
                 display: table-cell;
                 width: 40px;
+                vertical-align:middle;
             
                 .trashtask {
-					vertical-align: middle;
+					//vertical-align: middle;
 					margin-right: 10px;
-					opacity: 0.5;
+					//opacity: 0.5;
                 }
             }
             .trashtask:hover {
@@ -215,8 +217,33 @@ body {
             }
             
                 
+            //pour toutes les icones
+            img {
+                height: 1.5em;        
+                opacity: 0.4;        
+            }
+            img:hover {
+                opacity: 0.8;
+            }
+            
         }   // une tache      
-
+        
+        // surlignage d'une tache pour marquer la proximité des échéances
+        .datered {
+            background-color : red;
+        }
+        .dategreen {
+            background-color : green;
+        }
+        .dateorange {
+            background-color : orange;
+        }
+        .dateyellow {
+            background-color : yellow;
+        }
+        .datewhite {
+            background-color : white;
+        }
 
         // poiur gérer les boutons de commandes (mégadone, etc..)
         .userControls
