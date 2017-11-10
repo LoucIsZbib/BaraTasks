@@ -41,18 +41,11 @@ var local_or_remote = "remote"
 
 todoApp.controller("listManageCtrl", function($scope, $http, $filter, $timeout) {
  
+// pour autosélectionner le champ taskname lors d'une édition en cliquant sur le bouton
     $scope.giveFocus = function(idToFocus) {
-    
         document.getElementById(idToFocus).focus();
     };
     
-    var timerFinishEdit = null;
-    $scope.edit = false
-    $scope.finishEditDelayed = function() {
-        timer = $timeout(function () {
-            $scope.edit = false;
-        }, 1000);
-    };
  
 // INITIALISATION : on récupère la liste des tâche depuis le serveur
     $scope.lists = [];
