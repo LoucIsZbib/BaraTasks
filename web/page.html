@@ -90,37 +90,61 @@
                             
                         <div class="verticalSep"></div>
                             
-                        <form 
-                            ng-submit="inEdition = false"
-                            ng-show="inEdition"
-                            class="taskname"                            
-                            >
-                            <input 
-                                id="{{list.listid+ '_' + item.taskid}}"
-                                type="text"
-                                ng-model="item.name"
-                                ng-class="{completed: item.completed}"
-                                ng-model-options="{ debounce: 1500 }"
-                                ng-change="maj()"
-                            />
-                        </form>
-                        
                         <div class="taskname">
+                        
+                            <!-- nom et short description de la tâche -->
+                            <form 
+                                ng-submit="inEdition = false"
+                                ng-show="inEdition"                    
+                                >
+                                <input 
+                                    id="{{list.listid+ '_' + item.taskid}}"
+                                    type="text"
+                                    ng-model="item.name"
+                                    ng-class="{completed: item.completed}"
+                                    ng-model-options="{ debounce: 1500 }"
+                                    ng-change="maj()"
+                                />
+                            </form>
                             <span 
-                                    
+                                    class="taskname"
                                     ng-class="{completed: item.completed}"
                                     ng-hide="inEdition" 
                                     ng-bind-html="item.name | linky:'_blank'"
                                     ng-mouseover="showComment = true"
                                     ng-mouseleave="showComment = false"
-                            >
-                                
+                            >                                    
                             </span>
-                            
+
+                            <!-- commentaire de la tâche -->
                             <div class="comment">
-                                    BLABLA un commentaire
+                                <div 
+                                    class="edit commentComponent"
+                                    id='btn'
+                                    ng-mousedown="commentInEdition = true"
+                                    ng-mouseup="giveFocus(list.listid + '_' + item.taskid + '_comment')"
+                                    >
+                                    <img src="img/edit.svg" alt="edit" />
+                                </div>
+                                <form 
+                                    class="commentComponent"
+                                    ng-submit="commentInEdition = false"
+                                    ng-show="commentInEdition"                  
+                                    >
+                                    <input 
+                                        id="{{list.listid+ '_' + item.taskid + '_comment'}}"
+                                        type="text"
+                                        ng-model="item.comment"
+                                        ng-model-options="{ debounce: 1500 }"
+                                        ng-change="maj()"
+                                    />
+                                </form>
+                                <span
+                                        class="commentComponent"
+                                        ng-hide="commentInEdition" 
+                                        ng-bind-html="item.comment | linky:'_blank'">                        
+                                </span>
                             </div>
-                            
                         </div>
                         
                         <div 
