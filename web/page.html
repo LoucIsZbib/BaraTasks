@@ -41,7 +41,7 @@
                         ng-mouseleave="showTrashlist=false"
                         >
                         {{list.name}}
-                        ({{list.taskslist.length}})
+                        ({{list.taskslist | uncompleted_number}})
                         <img 
                             class="trashList" 
                             src="img/trash-a.svg" alt="trash" 

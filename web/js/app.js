@@ -36,6 +36,20 @@ todoApp.filter('diffFromToday', function() {
         };
 });
 
+todoApp.filter('uncompleted_number', function() {
+    return function(input) {
+        var nombre = 0;
+        if (input != undefined) {
+            for (var i = 0; i < input.length; i++) {
+                if ( !(input[i].completed == true)) {
+                    nombre++;
+                }
+            }
+        }
+        return nombre;
+    };
+});
+
 
 var local_or_remote = "remote"
 
